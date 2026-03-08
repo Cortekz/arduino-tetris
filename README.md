@@ -2,7 +2,9 @@
 
 A fully featured Tetris clone for Arduino Nano and a 128×64 SSD1306 OLED display, built and soldered by hand.
 
-[![Watch on YouTube](https://img.shields.io/badge/YouTube-Watch-red?logo=youtube)](https://youtube.com/your-link-here)
+[![Watch on YouTube](https://img.shields.io/badge/YouTube-Watch-red?logo=youtube)](https://www.youtube.com/watch?v=b8kVRZhSk5o)
+
+[![Tetris on Arduino Nano](https://img.youtube.com/vi/b8kVRZhSk5o/maxresdefault.jpg)](https://www.youtube.com/watch?v=b8kVRZhSk5o)
 
 ---
 
