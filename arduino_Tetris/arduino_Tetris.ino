@@ -3,7 +3,7 @@
  * ║  TETRIS  –  SSD1306 128×64  (PORTRAIT 64×128)        ║
  * ║  U8g2 · bitmap splash · EEPROM high score            ║
  * ╠══════════════════════════════════════════════════════╣
- * ║  Author  : Cortex                                    ║
+ * ║  Author  : Cortekz                                   ║
  * ║  Hardware: Arduino Nano · SSD1306 OLED · Passive     ║
  * ║            buzzer · 5× tactile buttons               ║
  * ╚══════════════════════════════════════════════════════╝
@@ -26,7 +26,7 @@
  *  LEFT    → D5
  *  DOWN    → D6   (double-tap = hard drop)
  *  ROTATE  → D7
- *  PAUSE   → D8   (doubles as START on splash/game over)
+ *  START   → D8   (doubles as PAUSE during gameplay)
  *  BUZZER  → D13
  *
  * ── LIBRARIES ───────────────────────────────────────────
@@ -60,7 +60,7 @@ U8G2_SSD1306_128X64_NONAME_F_HW_I2C
 #define BTN_LEFT   5
 #define BTN_DOWN   6   // double-tap for hard drop
 #define BTN_ROTATE 7
-#define BTN_PAUSE  8   // also START on splash / game over
+#define BTN_START  8   // also PAUSE during gameplay
 #define BUZZER    13
 
 inline void beep(uint16_t freq, uint16_t dur) { tone(BUZZER, freq, dur); }
@@ -549,7 +549,7 @@ void setup() {
   pinMode(BTN_RIGHT,  INPUT_PULLUP);
   pinMode(BTN_DOWN,   INPUT_PULLUP);
   pinMode(BTN_ROTATE, INPUT_PULLUP);
-  pinMode(BTN_PAUSE,  INPUT_PULLUP);
+  pinMode(BTN_START,  INPUT_PULLUP);
   pinMode(BUZZER, OUTPUT);
   randomSeed(analogRead(A1));
 
@@ -568,7 +568,7 @@ void setup() {
 
   startIntro();
 
-  while (digitalRead(BTN_PAUSE) == HIGH) {
+  while (digitalRead(BTN_START) == HIGH) {
     uint32_t now = millis();
     updateIntro();
     if (now - lastBlink >= 500) {
@@ -599,7 +599,7 @@ void loop() {
       showRetry = !showRetry;
     }
     drawGameOver(showRetry);
-    if (digitalRead(BTN_PAUSE) == LOW) { delay(300); resetGame(); }
+    if (digitalRead(BTN_START) == LOW) { delay(300); resetGame(); }
     return;
   }
 
@@ -608,7 +608,7 @@ void loop() {
   bR   = (digitalRead(BTN_RIGHT)  == LOW);
   bD   = (digitalRead(BTN_DOWN)   == LOW);
   bRot = (digitalRead(BTN_ROTATE) == LOW);
-  bPau = (digitalRead(BTN_PAUSE)  == LOW);
+  bPau = (digitalRead(BTN_START)  == LOW);
 
   uint32_t now = millis();
 
