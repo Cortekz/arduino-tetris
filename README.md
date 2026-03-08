@@ -47,7 +47,7 @@ RIGHT   → D4   (INPUT_PULLUP)
 LEFT    → D5
 DOWN    → D6   (double-tap = hard drop)
 ROTATE  → D7
-PAUSE   → D8   (also START on splash/game over)
+START   → D8   (also PAUSE during gameplay)
 BUZZER  → D13
 ```
 
@@ -66,17 +66,8 @@ Install via Arduino Library Manager:
 | File | Purpose |
 |---|---|
 | `tetris_oled.ino` | Main sketch |
-| `bitmaps.h` | Splash screen bitmap (generate with [image2cpp](https://javl.github.io/image2cpp/)) |
+| `bitmaps.h` | Splash screen bitmap (converted with [image2cpp](https://javl.github.io/image2cpp/)) |
 | `pitches.h` | Note frequency definitions |
-
-### Generating your own splash bitmap
-
-1. Open [image2cpp](https://javl.github.io/image2cpp/)
-2. Upload a 64×64px image
-3. Set canvas size to 64×64
-4. Enable **swap bits**
-5. Set output format to **Arduino**
-6. Copy the output into `bitmaps.h` and name the array `bmp_Tetris`
 
 ---
 
@@ -98,12 +89,10 @@ Install via Arduino Library Manager:
 | DOWN | Soft drop |
 | DOWN (double-tap) | Hard drop |
 | ROTATE | Rotate |
-| PAUSE | Pause / unpause |
-| PAUSE (on splash) | Start game |
-| PAUSE (game over) | Retry |
+| START | Start game / Pause / Unpause / Retry |
 
 ---
 
 ## Author
 
-Cortex
+Cortekz
